@@ -1,6 +1,18 @@
 import React, { Component } from 'react'
 
 class Register extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: '',
+      email: '',
+      password: '',
+      password2: '',
+      errors: {}
+    }
+
+  }
+
   render() {
     return (
       <div className="register">
@@ -11,7 +23,10 @@ class Register extends Component {
             <p className="lead text-center">Create your DevConnector account</p>
             <form action="create-profile.html">
               <div className="form-group">
-                <input type="text" className="form-control form-control-lg" placeholder="Name" name="name" required />
+                <input type="text" className="form-control form-control-lg" placeholder="Name" name="name"
+                value={this.state.name}
+                onChange={this.onChange}
+                required />
               </div>
               <div className="form-group">
                 <input type="email" className="form-control form-control-lg" placeholder="Email Address" name="email" />
