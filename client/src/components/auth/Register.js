@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {registerUser} from '../../actions/authActions';
-import {withRouter} from 'react-router-dom';
-
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 class Register extends Component {
   constructor() {
@@ -14,7 +13,7 @@ class Register extends Component {
       password: '',
       password2: '',
       errors: {}
-    }
+    };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -45,9 +44,10 @@ class Register extends Component {
   render() {
     //const errors = this.state.errors;
     const {errors} = this.state;
-
+    const {user} = this.props.auth;
     return (
       <div className="register">
+        {user ? user.name : null}
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
@@ -130,8 +130,16 @@ class Register extends Component {
   }
 }
 
+Register.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+}
+
 const mapStateToProps = (state) => ({
+  auth: state.auth,
   errors: state.errors
 });
 
-export default connect(mapStateToProps, {registerUser})(withRouter(Register));
+
+export default connect(mapStateToProps, {registerUser})(Register);
