@@ -12,6 +12,9 @@ import setAuthToken from './utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
 import { SET_CURRENT_USER } from './actions/types';
 import { logoutUser } from './actions/authActions';
+import PrivateRoute from "./components/common/PrivateRoute";
+import Dashboard from "./components/dashboard/Dashboard";
+
 
 //Check for token
 if (localStorage.jwtToken){
@@ -45,6 +48,8 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                      
             <Footer />
           </div>
         </Router>
