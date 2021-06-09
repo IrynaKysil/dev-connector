@@ -40,3 +40,18 @@
 .form-control::placeholder {
   color: #bbb !important;
 }
+
+.bg-dark {
+  background-color: #745971!important;
+}
+
+.btn-info {
+  color: #fff;
+  background-color: #745971;
+  border-color: #745971;
+  
+}
+
+.btn-info:hover {
+  background-color: #a17d9e;
+}
